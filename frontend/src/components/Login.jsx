@@ -44,7 +44,7 @@ export const Login = () => {
       <Button name={"Login"} handle={HandleClick} />
       <br />
       <h4>
-        Don't Have Account ? <Link to={"/signup"}>Sign</Link>{" "}
+        Don't Have Account ? <Link to={"/register"}>Sign</Link>{" "}
       </h4>
     </LoginDiv>
   );
