@@ -4,7 +4,7 @@ const ButtonDiv = styled.div`
   margin-top: 20px;
   button {
     padding: 10px 80px;
-    background-color: black;
+    background-color: teal;
     color: white;
     border: none;
   }

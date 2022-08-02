@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Button } from "./Button";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
+import axios from "axios";
 const SignupDiv = styled.div`
   width: 100%;
   margin: auto;
@@ -20,13 +20,21 @@ const SignupDiv = styled.div`
 
 export const Register = () => {
   const [user, setUser] = useState({});
+  const [nav, setNav] = useState(false);
   const navigate = useNavigate();
 
   const handle = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
-  console.log(user);
-  const HandleClick = () => {};
+
+  const HandleClick = async () => {
+    let { data } = await axios.post(`http://localhost:5000/register`, user);
+    {
+      data.errors
+        ? alert(`${data.errors[0].msg} of ${data.errors[0].param}`)
+        : navigate("/login");
+    }
+  };
 
   return (
     <SignupDiv>

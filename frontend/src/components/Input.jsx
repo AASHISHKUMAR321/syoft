@@ -10,7 +10,7 @@ const InputDiv = styled.div`
   }
 `;
 
-export default function FullWidthTextField({ text, handle, name }) {
+export default function Input({ text, handle, name }) {
   return (
     <InputDiv>
       <input placeholder={text} id="fullWidth" name={name} onChange={handle} />

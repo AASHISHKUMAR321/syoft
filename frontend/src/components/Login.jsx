@@ -1,9 +1,10 @@
 import React from "react";
-import FullWidthTextField from "./Input";
+import Input from "./Input";
 import styled from "styled-components";
 import { Button } from "./Button";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const LoginDiv = styled.div`
   width: 100%;
@@ -23,17 +24,28 @@ export const Login = () => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
-  const HandleClick = () => {};
+  const HandleClick = async () => {
+    let { data } = await axios.post(`http://localhost:5000/login`, user);
+    // {
+    //   data.errors
+    //     ? alert(`${data.errors[0].msg} of ${data.errors[0].param}`)
+    //     : navigate("/products");
+    // }
+    // console.log(data);
+    sessionStorage.setItem("user", JSON.stringify(data));
+    navigate("/products");
+    console.log(JSON.parse(sessionStorage.getItem("user")));
+  };
 
   return (
     <LoginDiv>
-      <FullWidthTextField text={"Email"} name={"email"} handle={handle} />
-      <FullWidthTextField text={"Password"} name={"password"} handle={handle} />
+      <Input text={"Email"} name={"email"} handle={handle} />
+      <Input text={"Password"} name={"password"} handle={handle} />
       <Button name={"Login"} handle={HandleClick} />
       <br />
-      <h6>
+      <h4>
         Don't Have Account ? <Link to={"/signup"}>Sign</Link>{" "}
-      </h6>
+      </h4>
     </LoginDiv>
   );
 };

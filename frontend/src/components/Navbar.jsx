@@ -12,7 +12,7 @@ const Nav = styled.div`
 export const Navbar = () => {
   const link = [
     { name: "Register", to: "/register" },
-    { name: "Login", to: "/user" },
+    { name: "Login", to: "/login" },
     { name: "Products", to: "/products" },
   ];
   return (
