@@ -26,6 +26,7 @@ export const Register = () => {
   const handle = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
+  console.log(user);
 
   const HandleClick = async () => {
     let { data } = await axios.post(`http://localhost:5000/register`, user);
@@ -46,7 +47,7 @@ export const Register = () => {
       <select name="role" id="" onChange={handle}>
         <option value="">Chose role</option>
         <option value="admin">admin</option>
-        <option value="mangaer">manager</option>
+        <option value="manager">manager</option>
         <option value="staff">staff</option>
       </select>
 

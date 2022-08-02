@@ -4,6 +4,8 @@ const connect = require("./config/db");
 const cors = require("cors");
 const { signup, login } = require("./controllers/user.controller");
 const { body, validationResult } = require("express-validator");
+const productController = require("./controllers/products.controller");
+const authenticate = require("./middlwear/authenticate");
 
 app.use(express.json());
 app.use(cors());
@@ -25,6 +27,8 @@ app.use(
   body("password").isLength({ min: 5, max: 20 }),
   login
 );
+
+app.use("/products", authenticate, productController);
 
 app.listen(port, async () => {
   try {
