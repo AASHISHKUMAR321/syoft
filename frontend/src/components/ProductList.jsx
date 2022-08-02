@@ -23,7 +23,7 @@ export const ProductList = () => {
   };
 
   const gethandler = async () => {
-    setGet(!get);
+    setGet(false);
     let res = await fetch("http://localhost:5000/products", {
       method: "GET",
       headers: {
